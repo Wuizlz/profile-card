@@ -3,12 +3,12 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 
 const skills = [
-  { skill: "HTML + CSS💪", level: "intermediate💪", color: "red" },
-  { skill: "JavaScript", level: "intermediate💪", color: "blue" },
-  { skill: "Web Design", level: "intermediate💪", color: "green" },
-  { skill: "Git and GitHub", level: "intermediate💪", color: "orange" },
-  { skill: "React", level: "beginner👶", color: "lightblue" },
-  { skill: "Java", level: "advanced🔥", color: "orangered" },
+  { skill: "HTML + CSS", level: "intermediate", color: "red" },
+  { skill: "JavaScript", level: "intermediate", color: "blue" },
+  { skill: "Web Design", level: "intermediate", color: "green" },
+  { skill: "Git and GitHub", level: "intermediate", color: "orange" },
+  { skill: "React", level: "beginner", color: "lightblue" },
+  { skill: "Java", level: "advanced", color: "orangered" },
 ];
 
 function App() {
@@ -44,17 +44,21 @@ function SkillList() {
   return (
     <div className="skill-list">
       {skills.map((item) => (
-        <Skill skillObj={item} key={item.skill} />
+        <Skill skill={item.skill} color={item.color} level = {item.level} key={item.skill} /> // Pass the entire object
       ))}
     </div>
   );
 }
 
-function Skill({ skillObj }) {
+function Skill({ color, skill, level }) { // Destructure the props
   return (
-    <div className="skill" style={{ backgroundColor: skillObj.color }}>
-      <span>{skillObj.skill}</span>
-      <span>{skillObj.level}</span>
+    <div className="skill" style={{ backgroundColor: color }}>
+      <span>{skill}</span>
+      <span>
+        {level === "beginner" && "👶"}
+        {level === "intermediate" && "💪"}
+        {level === "advanced" && "🔥"}
+      </span>
     </div>
   );
 }
