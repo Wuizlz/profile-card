@@ -2,6 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 
+const skills = [
+  { skill: "HTML + CSS💪", level: "intermediate💪", color: "red" },
+  { skill: "JavaScript", level: "intermediate💪", color: "blue" },
+  { skill: "Web Design", level: "intermediate💪", color: "green" },
+  { skill: "Git and GitHub", level: "intermediate💪", color: "orange" },
+  { skill: "React", level: "beginner👶", color: "lightblue" },
+  { skill: "Java", level: "advanced🔥", color: "orangered" },
+];
+
 function App() {
   return (
     <div className="card">
@@ -24,8 +33,8 @@ function Intro() {
       <h1>Daniel Briseno</h1>
       <p>
         Full-stack web developer and soon to be app developer. I would like to
-        then create my own app SchoolEm and change lives. I love to learn, spend time with my gf, eat,
-        enjoy nature, listen to music, and workout.
+        then create my own app SchoolEm and change lives. I love to learn, spend
+        time with my gf, eat, enjoy nature, listen to music, and workout.
       </p>
     </div>
   );
@@ -34,21 +43,18 @@ function Intro() {
 function SkillList() {
   return (
     <div className="skill-list">
-      <Skill skill="HTML + CSS" level="💪" color="red" />
-      <Skill skill="JavaScript" level="💪" color="blue" />
-      <Skill skill="Web Design" level="💻" color="green" />
-      <Skill skill="Git and GitHub" level="👍" color="orange" />
-      <Skill skill="React" level="⚛️" color="lightblue" />
-      <Skill skill="Java" level="🔥" color="orangered" />
+      {skills.map((item) => (
+        <Skill skillObj={item} key={item.skill} />
+      ))}
     </div>
   );
 }
 
-function Skill({ skill, level, color }) {
+function Skill({ skillObj }) {
   return (
-    <div className="skill" style={{ backgroundColor: color }}>
-      <span>{skill}</span>
-      <span>{level}</span>
+    <div className="skill" style={{ backgroundColor: skillObj.color }}>
+      <span>{skillObj.skill}</span>
+      <span>{skillObj.level}</span>
     </div>
   );
 }
